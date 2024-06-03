@@ -2,7 +2,7 @@ import pygame
 import time
 import math
 from utils import scale_image, blit_rotate_center
-
+``````````````
 # Load and scale images
 GRASS = scale_image(pygame.image.load("imgs/grass.jpg"), 2.5)
 TRACK = scale_image(pygame.image.load("imgs/track.png"), 0.9)
