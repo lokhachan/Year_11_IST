@@ -2,7 +2,7 @@ import pygame
 import time
 import math
 from utils import scale_image, blit_rotate_center
-``````````````
+
 # Load and scale images
 GRASS = scale_image(pygame.image.load("imgs/grass.jpg"), 2.5)
 TRACK = scale_image(pygame.image.load("imgs/track.png"), 0.9)
@@ -15,7 +15,7 @@ WIDTH, HEIGHT = TRACK.get_width(), TRACK.get_height()
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Racing Game!")
 
-FPS = 60
+FPS = 60 #Determines the framerate of the game
 
 # Abstract class representing a car
 class AbstractCar:
@@ -62,7 +62,7 @@ class AbstractCar:
 class PlayerCar(AbstractCar):
     IMG = RED_CAR
     START_POS = (180, 200)
-
+#adsfasdfasdf
 # Function to draw the game window
 def draw(win, images, player_car):
     for img, pos in images:
