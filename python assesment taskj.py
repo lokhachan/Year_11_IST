@@ -62,7 +62,7 @@ class AbstractCar:
 class PlayerCar(AbstractCar):
     IMG = RED_CAR
     START_POS = (180, 200)
-#adsfasdfasdf
+
 # Function to draw the game window
 def draw(win, images, player_car):
     for img, pos in images:
