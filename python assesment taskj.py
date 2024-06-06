@@ -1,9 +1,9 @@
 import pygame
-import time
+import time  #use of these modules allow players to
 import math
 from utils import scale_image, blit_rotate_center
 
-# Load and scale images
+# Load and scale images of the cars and backgrounds
 GRASS = scale_image(pygame.image.load("imgs/grass.jpg"), 2.5)
 TRACK = scale_image(pygame.image.load("imgs/track.png"), 0.9)
 TRACK_BORDER = scale_image(pygame.image.load("imgs/track-border.png"), 0.9)
@@ -11,9 +11,9 @@ RED_CAR = scale_image(pygame.image.load("imgs/red-car.png"), 0.55)
 GREEN_CAR = scale_image(pygame.image.load("imgs/green-car.png"), 0.55)
 
 # Set window dimensions and create the game window
-WIDTH, HEIGHT = TRACK.get_width(), TRACK.get_height()
-WIN = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Racing Game!")
+WIDTH, HEIGHT = TRACK.get_width(), TRACK.get_height()  #determining this allows us to prevent cars from going out of the track
+WIN = pygame.display.set_mode((WIDTH, HEIGHT)) #Creates a game window
+pygame.display.set_caption("Racing Game!")  #Displays game's name/caption and places it at the bottom of the game
 
 FPS = 60 #Determines the framerate of the game
 
@@ -25,7 +25,7 @@ class AbstractCar:
         self.vel = 0
         self.rotation_vel = rotation_vel
         self.angle = 0
-        self.x, self.y = self.START_POS
+        self.x, self.y = self.START_POS  #Determines starting position on the track, eg left and right
         self.acceleration = 0.1
 
     def rotate(self, left=False, right=False):
@@ -72,8 +72,8 @@ def draw(win, images, player_car):
     pygame.display.update()
 
 run = True
-clock = pygame.time.Clock()
-images = [(GRASS, (0, 0)), (TRACK, (0, 0))]
+clock = pygame.time.Clock() #Determines how long the player takes to complete the level
+images = [(GRASS, (0, 0)), (TRACK, (0, 0))]  #Background and Track
 player_car = PlayerCar(4, 4)
 
 while run:
