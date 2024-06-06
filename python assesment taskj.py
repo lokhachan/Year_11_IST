@@ -15,7 +15,7 @@ WIDTH, HEIGHT = TRACK.get_width(), TRACK.get_height()  # Get the width and heigh
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))  # Create a window with the specified dimensions
 pygame.display.set_caption("Racing Game!")  # Sets a caption for the game window called Racing Game.
 
-FPS = 60  # Frames per second for the game
+FPS = 60  # Determines the frames per seconds of the game, a higher fps would result in a smoother gaming expirence
 
 # Abstract class representing a car
 class AbstractCar:
