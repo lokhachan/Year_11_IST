@@ -3,16 +3,33 @@ import time
 import math
 from utils import scale_image, blit_rotate_center, blit_text_center
 pygame.font.init()
-#The code below loads all the images and assets used, and scales them (Eg,BLUE_CAR, GRASS)
+#The code below loads all the images and assets used, and scales them from the directory (python assets folder)
 GRASS = scale_image(pygame.image.load("imgs/grass.jpg"), 2.5)
 TRACK = scale_image(pygame.image.load("imgs/track.png"), 0.9)
 
 TRACK_BORDER = scale_image(pygame.image.load("imgs/track-border.png"), 0.9)
+# Scale the image to 90% of its original size using the scale_image() function
+# Assign the resulting image to the variable TRACK_BORDER
+
+#Adding Masks allows me to determine the areas where objects could collide, allowing me to add collisions into the game.
+
 TRACK_BORDER_MASK = pygame.mask.from_surface(TRACK_BORDER)
+# Create a collision mask for the TRACK_BORDER image
+# Use the from_surface() function of the pygame.mask module to generate a pixel-perfect collision mask based on the opaque parts of the image
+# Assign the collision mask to the variable TRACK_BORDER_MASK
 
 FINISH = pygame.image.load("imgs/finish.png")
+# Assigns the loaded image to the variable FINISH
+
 FINISH_MASK = pygame.mask.from_surface(FINISH)
+# Create a collision area for the FINISH image
+# Use the from_surface() function of the pygame.mask module to generate a collision mask based on the opaque parts of the image
+# Assign the collision mask to the variable FINISH_MASK
+
 FINISH_POSITION = (130, 250)
+# Assign the tuple (130, 250) to the variable FINISH_POSITION
+# Represents the position at which the FINISH image will be drawn on the game window
+# The values (130, 250) indicate the x and y coordinates, where the top-left corner of the image will be placed
 
 BLUE_CAR = scale_image(pygame.image.load("imgs/blue-car.png"), 0.55)
 RED_CAR = scale_image(pygame.image.load("imgs/red-car.png"), 0.55)
