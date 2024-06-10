@@ -3,7 +3,7 @@ import time
 import math
 from utils import scale_image, blit_rotate_center, blit_text_center
 pygame.font.init()
-
+#The code below loads all the images and assets used, and scales them (Eg,BLUE_CAR, GRASS)
 GRASS = scale_image(pygame.image.load("imgs/grass.jpg"), 2.5)
 TRACK = scale_image(pygame.image.load("imgs/track.png"), 0.9)
 
@@ -21,7 +21,7 @@ WIDTH, HEIGHT = TRACK.get_width(), TRACK.get_height()
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Racing Game!")
 
-MAIN_FONT = pygame.font.SysFont("comicsans", 44)
+MAIN_FONT = pygame.font.SysFont("Arial", 44)
 
 FPS = 60
 PATH = [(175, 119), (110, 70), (56, 133), (70, 481), (318, 731), (404, 680), (418, 521), (507, 475), (600, 551), (613, 715), (736, 713),
@@ -29,7 +29,7 @@ PATH = [(175, 119), (110, 70), (56, 133), (70, 481), (318, 731), (404, 680), (41
 
 
 class GameInfo:
-    LEVELS = 10
+    LEVELS = 5
 
     def __init__(self, level=1):
         self.level = level
