@@ -4,10 +4,10 @@ import math
 from utils import scale_image, blit_rotate_center, blit_text_center
 pygame.font.init()
 #The code below loads all the images and assets used, and scales them from the directory (python assets folder)
-GRASS = scale_image(pygame.image.load("imgs/grass.jpg"), 2.5)
-TRACK = scale_image(pygame.image.load("imgs/track.png"), 0.9)
+GRASS = scale_image(pygame.image.load("python assets folder/grass.jpg"), 0.9)
+TRACK = scale_image(pygame.image.load("python assets folder/track.png"), 0.9)
 
-TRACK_BORDER = scale_image(pygame.image.load("imgs/track-border.png"), 0.9)
+TRACK_BORDER = scale_image(pygame.image.load("python assets folder/track-border.png"), 0.9)
 # Scale the image to 90% of its original size using the scale_image() function
 # Assign the resulting image to the variable TRACK_BORDER
 
@@ -18,7 +18,7 @@ TRACK_BORDER_MASK = pygame.mask.from_surface(TRACK_BORDER)
 # Use the from_surface() function of the pygame.mask module to generate a pixel-perfect collision mask based on the opaque parts of the image
 # Assign the collision mask to the variable TRACK_BORDER_MASK
 
-FINISH = pygame.image.load("imgs/finish.png")
+FINISH = pygame.image.load("python assets folder/finish.png")
 # Assigns the loaded image to the variable FINISH
 
 FINISH_MASK = pygame.mask.from_surface(FINISH)
@@ -31,8 +31,8 @@ FINISH_POSITION = (130, 250)
 # Represents the position at which the FINISH image will be drawn on the game window
 # The values (130, 250) indicate the x and y coordinates, where the top-left corner of the image will be placed
 
-BLUE_CAR = scale_image(pygame.image.load("imgs/blue-car.png"), 0.55)
-RED_CAR = scale_image(pygame.image.load("imgs/red-car.png"), 0.55)
+BLUE_CAR = scale_image(pygame.image.load("python assets folder/blue-car.png"), 0.10)
+RED_CAR = scale_image(pygame.image.load("python assets folder/red-car.png"), 0.10)
 
 WIDTH, HEIGHT = TRACK.get_width(), TRACK.get_height()
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -122,7 +122,7 @@ class AbstractCar:
         self.vel = 0
 
 
-class PlayerCar(AbstractCar):
+class PlayerCar(AbstractCar): #This is the class for the player's class, the (Abstract Car) function allows us to copy the same functions of rules that apply to the abstract car and applies it here
     IMG = BLUE_CAR
     START_POS = (180, 200)
 
