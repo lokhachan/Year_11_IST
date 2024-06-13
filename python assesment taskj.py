@@ -2,7 +2,9 @@ import pygame
 import time
 import math
 from utils import scale_image, blit_rotate_center, blit_text_center
+pygame.init()
 pygame.font.init()
+
 #The code below loads all the images and assets used, and scales them from the directory (python assets folder)
 GRASS = scale_image(pygame.image.load("python assets folder/grass.jpg"), 0.9)
 TRACK = scale_image(pygame.image.load("python assets folder/track.png"), 0.9)
@@ -78,7 +80,7 @@ class GameInfo:
 class AbstractCar:
     def __init__(self, max_vel, rotation_vel):
         self.img = self.IMG
-        self.max_vel = max_vel
+        self.max_vel = 0.5
         self.vel = 0
         self.rotation_vel = rotation_vel
         self.angle = 0
@@ -96,6 +98,7 @@ class AbstractCar:
 
     def move_forward(self):
         self.vel = min(self.vel + self.acceleration, self.max_vel)
+        print(self.vel)
         self.move()
 
     def move_backward(self):
@@ -106,8 +109,9 @@ class AbstractCar:
         radians = math.radians(self.angle)
         vertical = math.cos(radians) * self.vel
         horizontal = math.sin(radians) * self.vel
-
+        #print(f"radians: {radians}, vertical: {vertical}, horizontal: {horizontal}")
         self.y -= vertical
+
         self.x -= horizontal
 
     def collide(self, mask, x=0, y=0):
@@ -124,20 +128,22 @@ class AbstractCar:
 
 class PlayerCar(AbstractCar): #This is the class for the player's class, the (Abstract Car) function allows us to copy the same functions of rules that apply to the abstract car and applies it here
     IMG = BLUE_CAR
-    START_POS = (180, 200)
+    START_POS = (170, 300)
 
     def reduce_speed(self):
         self.vel = max(self.vel - self.acceleration / 2, 0)
+        print("Reduce Speed")
         self.move()
 
     def bounce(self):
+        print("Bounce")
         self.vel = -self.vel
         self.move()
 
 
 class ComputerCar(AbstractCar):
     IMG = RED_CAR
-    START_POS = (150, 200)
+    START_POS = (150, 100)
 
     def __init__(self, max_vel, rotation_vel, path=[]):
         super().__init__(max_vel, rotation_vel)
@@ -226,6 +232,7 @@ def move_player(player_car):
     if keys[pygame.K_d]:
         player_car.rotate(right=True)
     if keys[pygame.K_w]:
+
         moved = True
         player_car.move_forward()
     if keys[pygame.K_s]:
@@ -275,8 +282,7 @@ while run:
     draw(WIN, images, player_car, computer_car, game_info)
 
     while not game_info.started:
-        blit_text_center(
-            WIN, MAIN_FONT, f"Press any key to start level {game_info.level}!")
+        blit_text_center(WIN, MAIN_FONT, f"Press any key to start level {game_info.level}!")
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
